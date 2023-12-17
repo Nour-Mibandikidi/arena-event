@@ -1,0 +1,47 @@
+<div *ngIf="filteredEvents.length > 0; else noEvents">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let eventData of filteredEvents">
+      <div class="card">
+        <img
+          class="card-img-top"
+          src="url_de_l_image"
+          alt="Image de l'événement"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ eventData.name }}</h5>
+          <p class="card-text">{{ eventData.description }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Type: {{ eventData.type }}</li>
+          <li class="list-group-item">
+            Places disponibles: {{ eventData.nb_places_dispo }} /
+            {{ eventData.nb_places_total }} -
+            {{
+              eventData.nb_places_dispo | percentage : eventData.nb_places_total
+            }}
+          </li>
+          <li class="list-group-item">
+            Date de début: {{ eventData.date_debut }}
+          </li>
+          <li class="list-group-item">
+            Artistes: {{ eventData.artist.join(", ") }}
+          </li>
+          <li class="list-group-item">Prix: {{ eventData.prix }}</li>
+        </ul>
+        <div class="card-body"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #noEvents>
+  <p>Aucun événement trouvé.</p>
+</ng-template>
+
+<!-- 
+    <h2>Liste d'événements</h2>
+    <ul>
+    <li *ngFor="let event of events" (click)="selectEvent(event)">
+        {{ event.name }}
+    </li>
+    </ul> 
+-->

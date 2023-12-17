@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { EventService } from '../service/event.service';
+import { EventService } from '../shared/service/event.service';
 import { AuthService } from '../auth/auth.service';
-import { UserService } from '../service/user.service';
+import { UserService } from '../shared/service/user.service';
 
 @Component({
   selector: 'app-profile',

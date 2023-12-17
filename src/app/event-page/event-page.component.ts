@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { EventService } from '../../../service/event.service';
-import { AuthService } from 'src/app/auth/auth.service';
+import { EventService } from '../shared/service/event.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-event-page',

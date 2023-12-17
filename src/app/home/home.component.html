@@ -1,2 +1,4 @@
-<p>home works!</p>
-<!-- <app-event-details [selectedEvent]="selectedEvent"></app-event-details> -->
+<div>
+  <app-filtre (filterApplied)="applyFilter($event)"></app-filtre>
+  <app-event-list [filterValue]="filterValue"></app-event-list>
+</div>

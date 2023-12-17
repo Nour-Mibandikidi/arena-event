@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../models/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -7,23 +9,26 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
   user: { id: number; username: string } | undefined;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  addUser(user: { username: string; password: string }) {
-    return this.http.post('http://localhost:3000/users', user).subscribe();
+  addUser(user: User) {
+    return this.http.post('http://localhost:8080/api/users', user);
   }
 
-  login(user: { username: string; password: string }) {
-    return this.http.post('http://localhost:3000/users/login', user);
+  login(user: User) {
+    return this.http.post('http://localhost:8080/api/users/login', user);
   }
 
   logout() {
     this.user = undefined;
     localStorage.removeItem('user');
+    localStorage.removeItem('isConnected');
+    this.isUserConnected();
+    this.router.navigate(['/login']);
   }
 
   saveUser() {
-    localStorage.setItem('user', '' + this.user?.id);
+    localStorage.setItem('isConnected', 'true');
   }
 
   getSavedUser() {
@@ -31,21 +36,17 @@ export class AuthService {
   }
 
   isUserConnected() {
-    if (this.user) {
-      this.saveUser();
+    const isConnected = localStorage.getItem('isConnected');
+    if (isConnected) {
       return true;
-    } else if (this.getSavedUser()) {
-      this.getSavedUserInfo().subscribe((user: any) => {
-        this.user = user[0];
-        return true;
-      });
+    } else {
+      return false;
     }
-    return false;
   }
 
   private getSavedUserInfo() {
     return this.http.get(
-      'http://localhost:3000/users/?id=' + this.getSavedUser()
+      'http://localhost:8080/api/users/?id=' + this.getSavedUser()
     );
   }
 }

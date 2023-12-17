@@ -7,6 +7,8 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { emailValidator } from 'src/app/shared/validators/custom-validators';
+import { HoverDirective } from 'src/app/directive/hover.directive';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,9 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
+  signUpForm!: FormGroup;
   message!: string;
+  SignUpOrSignIn: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -25,16 +29,58 @@ export class LoginComponent {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      username: new FormControl('', Validators.required),
-      password: [''],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+
+    this.signUpForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      email: ['', [Validators.required, emailValidator()]],
     });
   }
 
+  SignUpOrSignInMethod() {
+    this.SignUpOrSignIn = !this.SignUpOrSignIn;
+  }
+
+  signUp() {
+    console.log('Méthode signUp appelée');
+    console;
+    if (this.signUpForm.valid) {
+      const user = this.signUpForm.value;
+      console.log(user);
+      this.authService.addUser(user).subscribe(
+        (response) => {
+          this.message = 'Login réussi';
+          console.log('Connexion réussie', response);
+          this.authService.saveUser();
+          this.router.navigate(['/home']);
+        },
+        (error) => {
+          this.message = "Échec lors de l'inscription";
+          console.error('Échec de la connexion', error);
+        }
+      );
+    }
+  }
+
   login(): void {
-    if (this.authService.login(this.loginForm.value)) {
-      this.message = 'Login réussi';
-    } else {
-      this.message = "Échec de l'authentification";
+    if (this.loginForm.valid) {
+      const user = this.loginForm.value;
+      console.log(user);
+      this.authService.login(user).subscribe(
+        (response) => {
+          this.message = 'Login réussi';
+          console.log('Connexion réussie', response);
+          this.authService.saveUser();
+          this.router.navigate(['/home']);
+        },
+        (error) => {
+          this.message = "Échec de l'authentification";
+          console.error('Échec de la connexion', error);
+        }
+      );
     }
   }
 }

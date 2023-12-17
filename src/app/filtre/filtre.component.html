@@ -1,0 +1,15 @@
+<div class="filter-container">
+  <h3>Filtre sur les noms des events</h3>
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Rechercher..."
+    class="form-control search-bar"
+  />
+  <button class="btn btn-outline-primary" (click)="applyFilter()">
+    Filtrer
+  </button>
+  <button class="btn btn-secondary" (click)="resetFilter()">
+    Réinitialiser le filtre
+  </button>
+</div>

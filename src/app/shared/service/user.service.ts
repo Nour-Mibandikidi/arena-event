@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class FiltreService {
+export class UserService {
   constructor(private http: HttpClient) {}
 
-  getCategories() {
-    return this.http.get<[]>('http://localhost:3000/events/categories');
+  getUserById(id?: number) {
+    return this.http.get<[]>('http://localhost:8080/user/' + id);
   }
 }
