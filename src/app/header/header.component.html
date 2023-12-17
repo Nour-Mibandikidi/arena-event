@@ -1,4 +1,4 @@
-<nav *ngIf="isAuthenticated" class="navbar navbar-expand-lg navbar-light">
+<!-- <nav *ngIf="isAuthenticated" class="navbar navbar-expand-lg navbar-light">
   <div class="container">
     <a class="navbar-brand" href="#">My Events</a>
     <button
@@ -18,6 +18,8 @@
           <a class="nav-link" href="#">Accueil</a>
         </li>
         <li class="nav-item">
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="#">À propos</a>
         </li>
         <li class="nav-item">
@@ -29,4 +31,28 @@
       </ul>
     </div>
   </div>
-</nav>
+</nav> -->
+
+<div *ngIf="isAuthenticated" class="top-bar">
+    <div class="left">
+      <h2 class="navbar-brand" href="#">Arena-Event</h2>
+    </div>
+    <div class="right">
+      <div class="item">
+        <a class="nav-link" href="#">Accueil</a>
+      </div>
+      <div class="item">
+        <a class="nav-link" href="#">À propos</a>
+      </div>
+      <div class="item">
+        <a class="nav-link" href="#">Contact</a>
+      </div>
+      <div class="item">
+        <a class="nav-link" href="#">Profil</a>
+      </div>
+      <div class="item">
+        <button (click)="logout()" class="btn btn-danger">Déconnexion</button>
+      </div>
+
+    </div>
+</div>

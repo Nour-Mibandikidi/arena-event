@@ -1,7 +1,11 @@
-<div *ngIf="filteredEvents.length > 0; else noEvents">
-  <div class="row">
-    <div class="col-md-3" *ngFor="let eventData of filteredEvents">
-      <div class="card">
+<ng-template #noEvents> 
+  <p>Aucun événement trouvé.</p>
+</ng-template> 
+
+<div class="container-card"  *ngIf="filteredEvents.length > 0; else noEvents">
+    <div class="event-card" *ngFor="let eventData of filteredEvents">
+
+      <div class="card" (click)="selectEvent(eventData)">
         <img
           class="card-img-top"
           src="url_de_l_image"
@@ -30,18 +34,8 @@
         </ul>
         <div class="card-body"></div>
       </div>
-    </div>
-  </div>
-</div>
-<ng-template #noEvents>
-  <p>Aucun événement trouvé.</p>
-</ng-template>
 
-<!-- 
-    <h2>Liste d'événements</h2>
-    <ul>
-    <li *ngFor="let event of events" (click)="selectEvent(event)">
-        {{ event.name }}
-    </li>
-    </ul> 
--->
+    </div>
+</div>
+
+

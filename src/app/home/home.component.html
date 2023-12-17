@@ -1,4 +1,5 @@
+<app-header></app-header>
 <div>
-  <app-filtre (filterApplied)="applyFilter($event)"></app-filtre>
-  <app-event-list [filterValue]="filterValue"></app-event-list>
+  <app-filtre class="filter-container" (filterApplied)="applyFilter($event)"></app-filtre>
+  <app-event-list class="event-container" [filterValue]="filterValue"></app-event-list>
 </div>

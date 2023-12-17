@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { EventService } from '../shared/service/event.service';
 import { AuthService } from '../auth/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event-page',
@@ -10,17 +11,21 @@ import { AuthService } from '../auth/auth.service';
 export class EventPageComponent {
   events: any;
 
-  @Input() selectedEventId!: number;
+  //@Input() selectedEventId!: number;
 
   constructor(
     private eventService: EventService,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: ActivatedRoute,
   ) {}
-
+  
   ngOnInit(): void {
     this.authService.isUserConnected();
+    
+    this.route.params.subscribe((params) => {
+      this.getEventById( params['id']);
+    });
 
-    this.getEventById(this.selectedEventId);
   }
 
   getEventById(selectedEventId: number): void {

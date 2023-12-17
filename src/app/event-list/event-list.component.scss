@@ -1,0 +1,16 @@
+.container-card{
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .event-card{
+        width: 320px;
+        height: 500px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        box-shadow: 5px 2px 2px rgb(173, 173, 173);
+        margin: 10px;
+        padding: 5px
+    }
+}

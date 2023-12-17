@@ -5,6 +5,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { EventService } from '../shared/service/event.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class EventListComponent implements OnInit, OnChanges {
   events: any[] = [];
   filteredEvents: any[] = [];
 
-  constructor(private eventService: EventService) {}
+  constructor(private eventService: EventService, private router: Router) {}
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(this.filterValue);
@@ -51,5 +52,9 @@ export class EventListComponent implements OnInit, OnChanges {
         console.error('Erreur lors de la récupération des évènements');
       }
     );
+  }
+
+  selectEvent(event:any) {
+    this.router.navigate(["/eventPage",event.id])
   }
 }

@@ -1,31 +1,27 @@
-.navbar {
-  background-color: #3498db;
-  padding: 15px 0;
-  width: 100%; 
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&family=Rubik+Broken+Fax&family=Rubik+Doodle+Shadow&family=Rubik+Lines&display=swap');
+.top-bar{
+  height: 70px;
+  background-color: #282831;
+  margin-bottom: 20px;
+  display: flex;
 
-.navbar-brand {
-  color: #ffffff;
-  font-size: 1.5rem;
-}
+  .left{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
 
-.navbar-toggler {
-  border: none;
-}F
-
-.navbar-toggler-icon {
-  background-color: #ffffff;
-}
-
-.navbar-nav {
-  a {
-    color: #ffffff;
-    margin-right: 15px;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: #ecf0f1;
+    h2{
+      color: white;
     }
+  }
+  .right{
+    width: 50%;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 10px;
+    gap: 10px
   }
 }

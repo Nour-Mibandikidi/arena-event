@@ -23,7 +23,7 @@ const routes: Routes = [
     component: ProfileComponent,
   },
   {
-    path: 'eventPage',
+    path: 'eventPage/:id',
     component: EventPageComponent,
   },
 ];

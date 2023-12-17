@@ -1,4 +1,4 @@
-<div class="filter-container">
+<!-- <div class="filter-container">
   <h3>Filtre sur les noms des events</h3>
   <input
     type="text"
@@ -12,4 +12,19 @@
   <button class="btn btn-secondary" (click)="resetFilter()">
     Réinitialiser le filtre
   </button>
+</div> -->
+<div class="filter-bar">
+  <h3>Filtre sur les noms des events</h3>
+  <div class="bar">
+    <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Rechercher..."/>
+    <button class="btn btn-outline-primary" (click)="applyFilter()">
+      Filtrer
+    </button>
+    <button class="reset-button" (click)="resetFilter()">
+      Réinitialiser le filtre
+    </button>
+  </div>
 </div>

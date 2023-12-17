@@ -1,1 +1,25 @@
-<p>event-page works!</p>
+<app-header></app-header>
+ 
+<div class="container-page">
+    <div class="tilte">
+        <h2>Tout Savoir sur l’événement qui vous intéresse</h2>
+    </div>
+    <div class="details">
+        <div class="left">
+            <div class="card-event">
+                Arena-Event <br>
+                image indisponible
+            </div>
+        </div>
+        <div class="right">
+            <div class="name"> {{events.name}}</div>
+
+            <div class="tag">{{events.type}}</div>
+            <div class="description">{{events.description}}</div>
+            <div class="artist"> Artistes: <span>{{events.artist}}</span></div>
+            <div class="data">{{events.date_debut}}</div>
+            <div class="price"> Prix: {{events.prix}} €</div>
+            <div class="dispo"></div> 
+        </div>
+    </div>
+</div>
