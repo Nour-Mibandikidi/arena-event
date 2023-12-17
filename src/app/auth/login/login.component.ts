@@ -74,6 +74,8 @@ export class LoginComponent {
           this.message = 'Login réussi';
           console.log('Connexion réussie', response);
           this.authService.saveUser();
+          this.authService.user = response;
+          localStorage.setItem("user",this.authService.user.id);
           this.router.navigate(['/home']);
         },
         (error) => {

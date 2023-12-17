@@ -28,7 +28,7 @@ export class ProfileComponent {
 
   getUserInfo() {
     this.userService
-      .getUserById(this.authService.user?.id)
+      .getUserById(localStorage.getItem("user"))
       .subscribe((data) => {
         this.user = data;
       });

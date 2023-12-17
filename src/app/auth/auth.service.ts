@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  user: { id: number; username: string } | undefined;
+  //user: { id: number; username: string } | undefined;
+  user: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
